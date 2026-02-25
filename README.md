@@ -18,3 +18,10 @@ banco-ruby/
 ├── main.rb                # Arquivo principal (executa o programa)
 ├── Gemfile                # Dependências
 └── README.md              # Documentação
+
+
+Att: 
+- Adicionado transação
+- Adicionado validador
+- Adicionado cliente
+- Adicionado LICENCE
