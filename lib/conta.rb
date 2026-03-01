@@ -47,5 +47,30 @@ class Conta
       saldo_novo: @saldo
     }
   end
-  # realizar saque...
+
+  saldo_anterior + @saldo
+  @saldo -= valor_total
+  @saque_hoje += valor
+
+  transacao = Transacao.new(
+    tipo: 'saque',
+    valor: valor_total,
+    metodo: metodo,
+    saldo_anterior: saldo_anterior,
+    saldo_novo: @saldo
+  )
+
+  @transacoes << transacao
+
+  mensagem = "Saque de R$ #{format('%.2f', valor)} realizado com sucesso!"
+  mensagem += "\nTaxa: R$ #{format('%.2f', taxa)}" if taxa > 0
+
+  {
+    sucesso: true,
+    mensagem: mensagem,
+    saldo_novo: @saldo,
+    taxa: taxa
+  }
 end
+
+# Realizar transferência (DÉBITO - quem envia)
